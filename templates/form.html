@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="alert alert-success" role="alert">
+      Success
+    </div>
+    <div class="alert alert-danger" role="alert">
+        Server Error <h3 id="status-error"></h3>
+    </div>
+    <form method="post" id="bookform" class="needs-validation">
+    {% csrf_token %}
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="title" class="form-control" id="title" required>
+      </div>
+      <div class="mb-3">
+        <label for="author" class="form-label">Author</label>
+        <input type="text" name="author" class="form-control" id="author" required>
+      </div>
+      <div class="mb-3">
+        <label for="pages" class="form-label">Pages</label>
+        <input type="number" name="num_of_pages" class="form-control" id="pages" required>
+      </div>
+      <div class="mb-3">
+        <label for="authorEmail" class="form-label">Email address</label>
+        <input type="email" name="author_email" class="form-control" id="authorEmail" required>
+      </div>
+      <button type="submit" id="save" class="btn btn-primary">Add Book</button>
+    </form>
+{% endblock %}
+
+{% block extrahead %}
+<script src="{%  static "addBook.js" %}"></script>
+{% endblock %}
+
+
